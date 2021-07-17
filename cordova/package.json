@@ -20,7 +20,8 @@
       "cordova-plugin-whitelist": {},
       "cordova-plugin-statusbar": {},
       "cordova-plugin-keyboard": {},
-      "cordova-plugin-splashscreen": {}
+      "cordova-plugin-splashscreen": {},
+      "cordova-sqlite-storage": {}
     },
     "platforms": [
       "ios",
@@ -32,6 +33,7 @@
     "cordova-ios": "6.2.0",
     "cordova-plugin-keyboard": "1.2.0",
     "cordova-plugin-splashscreen": "6.0.0",
-    "cordova-plugin-statusbar": "2.4.3"
+    "cordova-plugin-statusbar": "2.4.3",
+    "cordova-sqlite-storage": "6.0.0"
   }
 }
