@@ -1,19 +1,56 @@
 <template>
-  <f7-page name="home">
+  <f7-page name="home"
+           @page:beforein="init">
     <!-- Top Navbar -->
-    <f7-navbar large>
-      <f7-nav-title>Framework7 SQLite Sample</f7-nav-title>
-      <f7-nav-title-large>Framework7 SQLite Sample</f7-nav-title-large>
+    <f7-navbar>
+      <f7-button round
+                 @click="loadData()">load data
+      </f7-button>
     </f7-navbar>
-    <!-- Toolbar-->
-    <f7-toolbar bottom>
-      <f7-link>Left Link</f7-link>
-      <f7-link>Right Link</f7-link>
-    </f7-toolbar>
-    <!-- Page content-->
-    <f7-block strong>
-      <p>Here is your blank Framework7 app. Let's see what we have here.</p>
-    </f7-block>
-
+    <div v-for="(item, index) in items"
+         :key="index">
+      <h1>{{ item.name }}</h1>
+    </div>
   </f7-page>
 </template>
+<script>
+import dbService from '../js/db-service';
+
+const displayData = async () =>
+    new Promise(function(resolve) {
+      dbService.execSQL('select * from DemoTable').then(function(result) {
+        let results = [];
+        for (let i = 0; i < result.rows.length; i++) {
+          results.push(result.rows.item(i));
+        }
+        resolve(results);
+      });
+    });
+
+const createTable = async () => {
+  await dbService.execSQL('CREATE TABLE IF NOT EXISTS DemoTable (name, score)');
+  await dbService.execSQL('INSERT INTO DemoTable VALUES (?,?)', ['Alice', 101]);
+  await dbService.execSQL('INSERT INTO DemoTable VALUES (?,?)', ['Betty', 202]);
+  console.log('table created.');
+};
+
+export default {
+  name: 'Home',
+  props: {
+    f7router: Object,
+  },
+  data() {
+    return {
+      items: [],
+    };
+  },
+  methods: {
+    init() {
+      dbService.isTableExists('DemoTable').then(displayData).catch(createTable);
+    },
+    loadData() {
+      displayData().then(x => this.items = x);
+    },
+  },
+};
+</script>

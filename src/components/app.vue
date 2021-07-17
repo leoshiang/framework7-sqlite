@@ -55,10 +55,7 @@
       });
 
       return {
-        f7params,
-        username,
-        password,
-
+        f7params
       }
     }
   }
