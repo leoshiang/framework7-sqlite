@@ -1,0 +1,39 @@
+{
+  "cwd": "/Users/leoshiang/Dropbox/Projects/Framework7/framework7-sqlite",
+  "type": [
+    "cordova"
+  ],
+  "name": "Framework7 SQLite Sample",
+  "framework": "vue",
+  "template": "blank",
+  "bundler": "webpack",
+  "cssPreProcessor": false,
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkTheme": false,
+    "iconFonts": true,
+    "fillBars": false
+  },
+  "customBuild": false,
+  "webpack": {
+    "developmentSourceMap": true,
+    "productionSourceMap": true,
+    "hashAssets": false,
+    "preserveAssetsPaths": false,
+    "inlineAssets": true
+  },
+  "pkg": "io.framework7.sqlite",
+  "cordova": {
+    "folder": "cordova",
+    "platforms": [
+      "ios",
+      "android"
+    ],
+    "plugins": [
+      "cordova-plugin-statusbar",
+      "cordova-plugin-keyboard",
+      "cordova-plugin-splashscreen"
+    ]
+  }
+}
